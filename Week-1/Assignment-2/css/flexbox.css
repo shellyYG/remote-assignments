@@ -1,0 +1,56 @@
+
+
+.main-header {
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: pink;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100 vh;
+}
+
+.primary-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro {
+    flex: 0 200px;
+    flex-basis: 200px;
+    align-self: center;
+    text-align: center;
+}
+
+
+.row1,
+.row2{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch; 
+    justify-content: center;
+
+}
+
+
+.item {
+    flex: 1 200px;
+    max-width: 600px;
+    text-align: center;
+    margin: 10px;
+}
+
+
+.row3,
+.row4 {
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch; 
+    justify-content: center;
+
+}
