@@ -7,7 +7,8 @@ app.use(cookieParser());
 
 app.set('view engine', 'pug');
 
-
+const mainRoutes = require('./routes');
+const numberRoutes = require('./routes/numbers')
 const app = express();
 app.get('/', (req, res) => {
     res.send("Hey! this is Shelly's first hand-made server!");
