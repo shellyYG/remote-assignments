@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     if (!nn) { //means did not have ?number in the URL
         res.send("Lack of Parameter");
     } else {
-        nn = parseInt(nn);
+        nn = parseInt(nn); //somehow need to transform nn to integer
         if (Number.isInteger(nn)) { //if its an interger
             let x = 0;
             for (i=0; i<=nn; i++) {
