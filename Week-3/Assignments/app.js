@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser= require('body-parser');
 const cookieParser = require('cookie-parser');
+const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cookieParser());
@@ -8,10 +9,12 @@ app.use(cookieParser());
 app.set('view engine', 'pug');
 
 const mainRoutes = require('./routes');
-const numberRoutes = require('./routes/numbers')
-const app = express();
-app.get('/', (req, res) => {
-    res.send("Hey! this is Shelly's first hand-made server!");
-});
+const getDataRoutes = require('./routes/getData')
 
-app.listen(3000);
+
+app.use(mainRoutes);
+app.use('/getData', getDataRoutes);
+
+app.listen(3000, ()=> {	
+        console.log('The application is running on localhost:3000! by Shelly the smart girl')
+});
