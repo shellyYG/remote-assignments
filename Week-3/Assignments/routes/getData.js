@@ -7,8 +7,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    const number = req.query.side;
-    if (!number) {
+    let number = req.query.number;
+    const { id } = req.params;
+
+    if (!number) { //if there is no side query, go back to localhost:3000
         return res.redirect(`/`);
     } else if (typeof(number) == "number") {
         const templateData = { };
@@ -18,8 +20,9 @@ router.get('/:id', (req, res) => {
         }
         templateData.number = nn;
     } else {
-        const templateData = {};
+        const templateData = { };
         nn = 'Wrong Parameter';
+        templateData.number = nn;
     }
     res.render('getData', templateData);
 });
