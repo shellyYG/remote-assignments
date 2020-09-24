@@ -1,5 +1,5 @@
 let button = document.querySelector("#btn");
-let ss = 3;
+var ss =10;
 
 button.addEventListener('click', ()=> {
     ss = document.querySelector('#addinput').value;
@@ -8,9 +8,7 @@ button.addEventListener('click', ()=> {
 
 
 
-
 let xhr = new XMLHttpRequest();
-        
 xhr.responseType = 'json';//so we don't need to parse JSON later
 
 xhr.onreadystatechange = function() {
