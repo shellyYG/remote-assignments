@@ -1,14 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+
+
 router.get('/', (req, res) => { //when customer arrive trackName...what will happen?
-    const name = req.cookies.cookiect;
-    if (name) {
-        res.render('myName');
-    } else {
-        res.render('trackName',{name: req.cookies.cookiect});
-    }
-    
+    req.query.name = req.cookies.cookiect;
+    //console.log(req.query.name); //successfully print out Shelli
+    res.render('trackName',{name: req.cookies.cookiect});
 });
 
 

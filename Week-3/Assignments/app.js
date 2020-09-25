@@ -20,9 +20,10 @@ app.use('/trackName', trackNameRoutes);
 app.use('/myName', myNameRoutes);
 app.use(express.static('public'));
 
-app.post('/trackName', (req, res) => {
+app.post('/myName', (req, res) => {
     res.cookie('cookiect',req.body.ctname); //send the cookie
-    res.redirect('/myName'); //show the myName page after the cookie sent
+    res.redirect('/trackName');
+    
 })
 
 

@@ -1,4 +1,11 @@
 extends layout.pug
 
 block content
-    p Hello, #{name}!
+    if customername
+        h3 Welcome, #{customername}!
+    else    
+        form(action='/myName', method='post')
+            label Please enter your name:
+                input(type='text', name='ctname') 
+                
+            button(type='submit') Submit oh!
