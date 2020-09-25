@@ -18,7 +18,7 @@ app.use(express.static('public'));
 
 app.post('/trackName', (req, res) => {
     res.cookie('username',req.body.username); //send the cookie
-    res.render('myName',{name: req.body.username}); //show the myName page after the cookie sent
+    res.redirect('/myName',{name: req.body.username}); //show the myName page after the cookie sent
 })
 
 
