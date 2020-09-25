@@ -21,8 +21,8 @@ app.use('/myName', myNameRoutes);
 app.use(express.static('public'));
 
 app.post('/trackName', (req, res) => {
-    res.cookie('cookieone',req.body.cookieonename); //send the cookie
-    res.redirect('/myName',{name: req.body.cookieonename}); //show the myName page after the cookie sent
+    res.cookie('cookiect',req.body.ctname); //send the cookie
+    res.redirect('/myName',{name: req.body.ctname}); //show the myName page after the cookie sent
 })
 
 
