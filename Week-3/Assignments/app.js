@@ -22,7 +22,7 @@ app.use(express.static('public'));
 
 app.post('/myName', (req, res) => {
     res.cookie('cookiect',req.body.ctname); //send the cookie
-    res.redirect('/trackName');
+    res.redirect('/trackName?name='+req.body.ctname);
     
 })
 
