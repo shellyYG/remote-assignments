@@ -16,6 +16,12 @@ app.use(mainRoutes);
 app.use('/getData', getDataRoutes);
 app.use(express.static('public'));
 
+app.post('/trackName', (req, res) => {
+    res.cookie('username',req.body.username); //send the cookie
+    res.render('myName',{name: req.body.username}); //show the myName page after the cookie sent
+})
+
+
 app.listen(3000, () => {	
 	console.log('The application is running on localhost:3000! by Shelly the smart girl')
 });	
