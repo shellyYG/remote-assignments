@@ -1,0 +1,8 @@
+extends layout.pug
+
+block content
+    form(action='/trackName', method='post')
+        label Please enter your name:
+            input(type='text', name='cookieonename') 
+            h3 `I am ${name}`
+        button(type='submit') Submit oh!
