@@ -2,26 +2,24 @@ let button = document.querySelector("#btn");
 var ss =10;
 
 button.addEventListener('click', ()=> {
-    //1. console.log("hi beginner") 
-    ss = document.querySelector('#addinput').value;
-    ss = parseInt(ss);
-    //2. console.log(typeof ss)
-
-    let xhr = new XMLHttpRequest();
-    xhr.responseType = 'json';//so we don't need to parse JSON later
-
+    
+    ss = document.querySelector('#addinput').value; //1.
+    ss = parseInt(ss); //2.
+    let xhr = new XMLHttpRequest(); //3.
+    
+    xhr.responseType = 'json';//4. //so we don't need to parse JSON later
+    
     xhr.onreadystatechange = function() {
+        //5. //8.
         if(xhr.readyState === 4) {
-            const data = xhr.response;
-            console.log(data); //6.
-            //7. console.log("Inside xhr after data");
+            const data = xhr.response; //9.
+            console.log(data); //10.
         }
     };
-    //3. console.log(ss)
-    xhr.open('GET','http://localhost:3000/getData?number='+ss);
-    //4. console.log("after open");
-    xhr.send();
-    //5. console.log("after send");
+    
+    xhr.open('GET','http://localhost:3000/getData?number='+ss); //6.
+    xhr.send(); //7.
+   
 });
 
 
