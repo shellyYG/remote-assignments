@@ -4,4 +4,8 @@ block content
     if customername
         h3 Welcome, #{customername}!
     else    
-        h3 blank
+        form(action='/trackName', method='get') <!--dd -->
+                label Please enter your name:
+                 input(type='text', name='name') 
+                
+                button(type='submit') Submit la!

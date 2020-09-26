@@ -12,15 +12,6 @@ const mainRoutes = require('./routes/index.js');
 const getDataRoutes = require('./routes/getData');
 const trackNameRoutes = require('./routes/trackName');
 const myNameRoutes = require('./routes/myName');
-//Get client side object
-// const domino = require('domino');
-// import { readFileSync } from 'fs';
-// const DIST_FOLDER = join(process.cwd(), 'dist');
-// const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();
-// const winObj = domino.createWindow(template);
-// global['window'] = winObj;
-// global['document'] = winObj.document;
-// End
 
 app.use(mainRoutes);
 app.use('/getData', getDataRoutes);
@@ -29,13 +20,15 @@ app.use('/trackName', trackNameRoutes);
 app.use(express.static('public'));
 
 app.get('/trackName', (req, res) => {
-    //when redirect to trackName
-    if (req.cookies.cookiect) {
-        res.redirect('/myName');
-    } else {
-        res.render('trackName');
-        res.cookie('cookiect',req.query.name);
-    }
+    //when going to trackName by myName.pug's get form method
+    //create a cookie whose key is cookiect 
+    //and whose value is the query string's value
+    //this query string's key is "name"
+    res.cookie('cookiect',req.query.name);
+    //confirm the existence of the cookie
+    console.log("Hey I am query string"+req.query.name);
+    //redirect back to /myName
+    res.redirect('/myName'); 
 })
 
 app.get('/myName', (req,res) => {
@@ -43,7 +36,8 @@ app.get('/myName', (req,res) => {
         console.log("cookie exists!");
         res.render('myName',{customername: req.cookies.cookiect});
     } else {
-        res.redirect('/trackName');
+        res.render('myName',{customername: req.cookies.cookiect});
+        //creates the query string on/trackName in URL
     }
 })
 
