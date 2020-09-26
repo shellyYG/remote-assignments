@@ -25,17 +25,19 @@ app.get('/trackName', (req, res) => {
     //and whose value is the query string's value
     //this query string's key is "name"
     res.cookie('cookiect',req.query.name);
+    console.log("trackName已經幫你存下了cookie")
     //confirm the existence of the cookie
-    console.log("Hey I am query string"+req.query.name);
+    console.log("哈囉我是/trackName下的query string，我的value是："+req.query.name);
     //redirect back to /myName
     res.redirect('/myName'); 
 })
 
 app.get('/myName', (req,res) => {
     if (req.cookies.cookiect) {
-        console.log("cookie exists!");
+        console.log("嗨妳好，如果cookie的確存在，則我會出現");
         res.render('myName',{customername: req.cookies.cookiect});
     } else {
+        console.log("Cookie 不存在. 如果是你還沒讓使用者填單，那沒關係，如果使用者已經填單了但還是看到我，那打掉重練!")
         res.render('myName',{customername: req.cookies.cookiect});
         //creates the query string on/trackName in URL
     }
