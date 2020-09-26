@@ -1,2 +1,9 @@
-p This is a page to submit your name: "#{name}" to, but will soon be gone.
+extends layout.pug
 
+block content
+
+    form(action='/trackName', method='get') 
+                label Please enter your name:
+                 input(type='text', name='name') 
+                
+                button(type='submit') Submit la!
