@@ -2,7 +2,7 @@ function twoSum(nums, target) {
     for (i=0; i< length; i++) {
         let firstn = i;
         for (j = 0; j < (length-firstn); j++) {
-            let secondn = firstn+j;
+            //let secondn = firstn+j; discovered that I didnt need secondn
             output = nums[i]+nums[j];
             //console.log(output); verified output
             while (output == target) {
