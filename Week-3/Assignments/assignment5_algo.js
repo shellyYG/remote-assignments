@@ -10,9 +10,7 @@ function twoSum(nums, target) {
                 finalresult.push(i);
                 finalresult.push(j);
                 return finalresult;
-            } else {
-                console.log("No result!");
-            }
+            } 
         }
     }
 }
