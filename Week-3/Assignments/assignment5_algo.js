@@ -13,6 +13,7 @@ function twoSum(nums, target) {
             } 
         }
     }
+    console.log("Sorry, can't find the combination for your target.")
 }
 /*
     For example:
