@@ -3,13 +3,10 @@ function twoSum(nums, target) {
         let firstn = i;
         for (j = 0; j < (length-firstn); j++) {
             let secondn = firstn+j;
-            console.log("First index is: "+i);
-            console.log("Second index is: "+j);
+            output = nums[i]+nums[j];
+            //console.log(output); verified output
         }
     }
-    
-    let output = nums[i]+nums[j];
-    return output;
 }
 /*
     For example:
