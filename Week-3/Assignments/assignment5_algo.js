@@ -5,7 +5,7 @@ function twoSum(nums, target) {
             //let secondn = firstn+j; discovered that I didnt need secondn
             output = nums[i]+nums[j];
             //console.log(output); verified output
-            while (output == target) {
+            if (output === target) {
                 let finalresult=[];
                 finalresult.push(i);
                 finalresult.push(j);
