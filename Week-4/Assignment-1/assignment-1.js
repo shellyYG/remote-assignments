@@ -1,5 +1,6 @@
 function delayedResult(n1, n2, delayTime, callback) {
     setTimeout(function() {
+        //console.log("I am here");
         x = n1+n2;
         //console.log("Hi");
         callback(x); //callback in callback
