@@ -8,21 +8,21 @@ function ajax(src, callback){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if(xhr.readyState === 4 && xhr.state ===200){
-            let restext = JSON.parse(xhr.responseText);
-            callback(restext); //ajax calls the callback and callback use the restext  
-            console.log("xhr request is ready!");
+            console.log("/1");
+            callback(xhr.responseText); //ajax calls the callback and callback use the restext  
+            console.log("/2");
         }
-        console.log("After xhr onreadystate!")
+        console.log("/3")
     }
-    xhr.open('GET',src,true);
+    xhr.open('GET',src);
     xhr.send();
-    console.log("After xhr.send!")
+    console.log("/4")
 }
 
 let src = "https://cwpeng.github.io/live-records-samples/data/products.json";
 
 function render(data){
-    app.render(data);
+    data.jsonp(obj)
 }
 
 ajax("https://cwpeng.github.io/live-records-samples/data/products.json", function(response){ 
