@@ -11,10 +11,9 @@ app.set('view engine', 'pug');
 //     callback();
 // }
 
-function render(){
-    app.get('/hw2', (req,res) => {
-        console.log("Hi!! Shelly on the go!");
-        res.render('hw2');
+function render(data){
+    res.render(data, => {
+        f
     })
     // let welcomemsg = document.querySelector("title.intro");
     // welcomemsg.addEventListener('click', () => {
