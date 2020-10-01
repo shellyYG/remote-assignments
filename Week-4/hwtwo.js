@@ -3,33 +3,33 @@ const app = express();
 
 app.set('view engine', 'pug');
 
-// app.get('/hw2', (req,res) => {
-//     console.log("Hi!! Shelly on the go!");
-//     res.render('hw2');
-// })
-// function ajax(src, callback){
-//     callback();
-// }
-
-function render(data){
-    res.render(data, => {
-        f
-    })
-    // let welcomemsg = document.querySelector("title.intro");
-    // welcomemsg.addEventListener('click', () => {
-    //     welcomemsg.textContent = 'Have a Good Time!';
-    // });			
+function ajax(src, callback){
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            let restext = JSON.parse(xhr.responseText);
+            callback(restext);
+            console.log("xhr request is ready!");
+        }
+        console.log("After xhr onreadystate!")
+    }
+    xhr.open('GET',src);
+    xhr.send();
+    console.log("After xhr.send!")
 }
 
-render();
+let src = "https://cwpeng.github.io/live-records-samples/data/products.json";
 
-app.get('/test', render);
+function render(data){
+    app.get('data', (req,res) => {
+        console.log("Hi!! Shelly on the go!");
+        res.render('hw2');
+    })
+}
+
+ajax("https://cwpeng.github.io/live-records-samples/data/products.json", function(response){ render(response); });
 
 
-//ajax("/hw2", render);//function(response){ render(response);
-    
-//}); // you should get product information in JSON format and render data in the page
-
-app.listen(4000, () => {	
-	console.log('The application is running on localhost:4000!')
-});	
+// app.listen(4000, () => {	
+// 	console.log('The application is running on localhost:4000!')
+// });	
