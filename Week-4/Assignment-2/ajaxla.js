@@ -1,10 +1,20 @@
 let button = document.querySelector("#btn");
 
 function ajax(src, callback){
-    //code here
+    let xhr = new XHLHttpRequest();
+    xhr.responseType = 'json';
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4){
+            const data = xhr.response;
+            callback(data)
+        }
+        xhr.open('GET',src);
+        xhr.send();
+    }
 }
 
 function render(data){
+    
     //use document.createElement() and appendChild()
 }
 
