@@ -1,5 +1,19 @@
 let button = document.querySelector("#btn");
-var ss =10;
+
+function ajax(src, callback){
+    //code here
+}
+
+function render(data){
+    //use document.createElement() and appendChild()
+}
+
+
+ajax("https://cwpeng.github.io/live-records-samples/data/products.json", function(response){
+    render(response);
+});
+
+
 
 button.addEventListener('click', ()=> {
     
