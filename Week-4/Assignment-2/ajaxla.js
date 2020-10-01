@@ -2,8 +2,9 @@ function ajax(src, callback){
     var xhr=new XMLHttpRequest();
     xhr.onreadystatechange = function(){
         if(xhr.readyState === 4){
-            console.log(xhr.response);
-            callback(xhr.response);
+            console.log("/1 Shelly log");
+            console.log(xhr.responseText);
+            callback(xhr.responseText); //callback == render // data == xhr.response
         }
     }
     xhr.open('GET',src);
