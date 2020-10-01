@@ -14,7 +14,10 @@ function ajax(src, callback){
 }
 
 function render(data){
-    
+    let returncontent = document.createElement("rr");
+    let targetplace = document.querySelector('#outhere');
+    targetplace.innerHTML= data;
+    document.body.appendChild(targetplace);
     //use document.createElement() and appendChild()
 }
 
