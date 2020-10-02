@@ -1,0 +1,23 @@
+{
+  "name": "assignment-3",
+  "version": "1.0.0",
+  "description": "sql server for week4 assignment3",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shellyYG/remote-assignments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shellyYG/remote-assignments/issues"
+  },
+  "homepage": "https://github.com/shellyYG/remote-assignments#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
