@@ -8,9 +8,14 @@ html(lang="en")
     h3 Welcome, #{customername}!
   else 
     form(action='/member', method='get')
-      label Please signup or log in here!
-      input(type='text', name='aname') 
-                
+      label Please input your email: 
+      br 
+      input(type='text', name='emails') 
+      br
+      label Please input your password:
+      br
+      input(type='text', name='passw')
+      br          
       button(type='submit') Submit la! 
 
 
