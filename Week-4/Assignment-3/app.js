@@ -51,11 +51,8 @@ app.get('/member', (req, res) => {
     let sql = 'SELECT * FROM user WHERE email ='+"'"+ req.query.emails+"'";
     let query = db.query(sql, (err,result)=>{
         if(err) throw err;
-        if(result.length ===0){
-            console.log('Its a new user');
-            console.log(result);
-            console.log(sql);
-            //input this user into database
+        if(result.length ===0){ //if it's a non-existing email
+            //insert this user into database
             let post = {email: req.query.emails ,password: req.query.passw};
             let sqlin = 'INSERT INTO user SET?';
             let queryin = db.query(sqlin,post,(errin,resultin)=>{
@@ -63,9 +60,20 @@ app.get('/member', (req, res) => {
                 console.log(resultin);
                 res.render('member',{customername: req.query.emails});
              })
-        }else{
+        }else{ //its an existing user
             console.log(result);
-            res.redirect('/home');
+            //check if email & password match any existing line
+            let sqlcheck = 'SELECT * FROM user WHERE email ='+"'"+ req.query.emails+"'"+'and password ='+"'"+ req.query.passw+"'";
+            let querycheck = db.query(sqlcheck,(errcheck,resultcheck)=>{
+                if(errcheck) throw errcheck;
+                console.log(resultcheck);
+                if(resultcheck.length===0){
+                    res.send('Wrong password!');
+                }else{
+                    res.redirect('/home');
+                }
+            })
+            
         }
         
     })
