@@ -57,15 +57,17 @@ app.get('/member', (req, res) => {
             console.log(result);
             console.log(sql);
             //input this user into database
-            //let post = {email: req.query.emails ,password: req.query.passw};
-            //let sql = 'INSERT INTO user SET?';
-            // let queryin = db.queryin(sql,post,(err,result)=>{
-            //     if(err) throw err;
-            //     console.log(result);
-            res.send('hey');
-            // })
+            let post = {email: req.query.emails ,password: req.query.passw};
+            let sqlin = 'INSERT INTO user SET?';
+            let queryin = db.query(sqlin,post,(errin,resultin)=>{
+                if(errin) throw errin;
+                console.log(resultin);
+                res.redirect('/home');
+             })
         }else{
+            console.log(result);
             res.send('Its an existing user');
+            
         }
         
     })
