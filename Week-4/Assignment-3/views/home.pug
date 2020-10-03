@@ -5,7 +5,7 @@ html(lang="en")
     
   body
   if customername
-    h3 Welcome, #{customername}!
+    h3 You are an existing user, #{customername}!
   else 
     form(action='/member', method='get')
       label Please input your email: 

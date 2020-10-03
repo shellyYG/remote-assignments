@@ -42,7 +42,6 @@ app.get('/createtable',(req,res)=>{
     })
 })
 // End testing sql
-// Assignment 3 part
 app.get('/member', (req, res) => {
     res.cookie('cookieemail',req.query.emails);
     res.cookie('cookiepass',req.query.passw);
@@ -62,12 +61,11 @@ app.get('/member', (req, res) => {
             let queryin = db.query(sqlin,post,(errin,resultin)=>{
                 if(errin) throw errin;
                 console.log(resultin);
-                res.redirect('/home');
+                res.render('member',{customername: req.query.emails});
              })
         }else{
             console.log(result);
-            res.send('Its an existing user');
-            
+            res.redirect('/home');
         }
         
     })
@@ -113,8 +111,6 @@ app.get('/home', (req,res) => {
     } else {
         console.log("Cookie 不存在. 如果是你還沒讓使用者填單，那沒關係，如果使用者已經填單了但還是看到我，那打掉重練!")
         res.render('home',{customername: req.cookies.cookieemail});
-        
-        
     }
 })
 
