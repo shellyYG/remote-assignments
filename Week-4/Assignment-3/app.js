@@ -47,14 +47,49 @@ app.get('/member', (req, res) => {
     res.cookie('cookieemail',req.query.emails);
     res.cookie('cookiepass',req.query.passw);
     console.log("cookie saved through get method from reaching /member")
-    //store the name in the backend
-    let post = {email: req.query.emails ,password: req.query.passw};
-    let sql = 'INSERT INTO user SET?';
-    let query = db.query(sql, post, (err, result)=> {
+    //Check if the email exist
+    
+    let sql = 'SELECT * FROM user WHERE email ='+"'"+ req.query.emails+"'";
+    let query = db.query(sql, (err,result)=>{
         if(err) throw err;
-        console.log(result);
-        res.redirect('/home'); //redirect back to /myName
+        if(result.length ===0){
+            console.log('Its a new user');
+            console.log(result);
+            console.log(sql);
+            //input this user into database
+            //let post = {email: req.query.emails ,password: req.query.passw};
+            //let sql = 'INSERT INTO user SET?';
+            // let queryin = db.queryin(sql,post,(err,result)=>{
+            //     if(err) throw err;
+            //     console.log(result);
+            res.send('hey');
+            // })
+        }else{
+            res.send('Its an existing user');
+        }
+        
     })
+    //     if(result.length === 0){
+    //         let post = {email: req.query.emails ,password: req.query.passw};
+    //         let sql = 'INSERT INTO user SET?';
+    //         let query = db.query(sql, post, (err, result)=> {
+    //             if(err) throw err;
+    //             console.log(result);
+    //             res.redirect('/home'); //redirect back to /myName
+    //         })
+    //     }else {
+    //         res.send('Sorry this email already exists!');
+    //     }
+    // })
+    
+    //store the name in the backend
+    // let post = {email: req.query.emails ,password: req.query.passw};
+    // let sql = 'INSERT INTO user SET?';
+    // let query = db.query(sql, post, (err, result)=> {
+    //     if(err) throw err;
+    //     console.log(result);
+    //     res.redirect('/home'); //redirect back to /myName
+    // })
 })
 
 
