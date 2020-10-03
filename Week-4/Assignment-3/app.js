@@ -43,34 +43,36 @@ app.get('/createtable',(req,res)=>{
 })
 // End testing sql
 app.get('/member', (req, res) => {
-    res.cookie('cookieemail',req.query.emails);
-    res.cookie('cookiepass',req.query.passw);
-    console.log("cookie saved through get method from reaching /member")
+    res.cookie('cookienemail',req.query.nemails);
+    res.cookie('cookienpass',req.query.npassw);
+    res.cookie('cookieoemail',req.query.oemails);
+    res.cookie('cookieopass',req.query.opassw);
+    console.log("cookies are saved via /member");
     
     //Check if the email exist
-    let sql = 'SELECT * FROM user WHERE email ='+"'"+ req.query.emails+"'";
+    let sql = 'SELECT * FROM user WHERE email ='+"'"+ req.query.nemails+"'";
     let query = db.query(sql, (err,result)=>{
         if(err) throw err;
-        if(result.length ===0){ //if it's a non-existing email
+        if(result.length ===0){ //if it's a nnew email
             //insert this user into database
-            let post = {email: req.query.emails ,password: req.query.passw};
+            let post = {email: req.query.nemails ,password: req.query.npassw};
             let sqlin = 'INSERT INTO user SET?';
             let queryin = db.query(sqlin,post,(errin,resultin)=>{
                 if(errin) throw errin;
                 console.log(resultin);
-                res.render('member',{customername: req.query.emails});
+                res.render('member',{customername: req.query.nemails});
              })
         }else{ //its an existing user
             console.log(result);
             //check if email & password match any existing line
-            let sqlcheck = 'SELECT * FROM user WHERE email ='+"'"+ req.query.emails+"'"+'and password ='+"'"+ req.query.passw+"'";
+            let sqlcheck = 'SELECT * FROM user WHERE email ='+"'"+ req.query.oemails+"'"+'and password ='+"'"+ req.query.opassw+"'";
             let querycheck = db.query(sqlcheck,(errcheck,resultcheck)=>{
                 if(errcheck) throw errcheck;
                 console.log(resultcheck);
                 if(resultcheck.length===0){ //if wrong password
                     res.redirect('/home');
                 }else{
-                    res.render('member',{customername: req.query.emails});
+                    res.render('member',{customername: req.query.oemails});
                 }
             })
             
@@ -90,17 +92,12 @@ app.get('/checktable',(req, res)=>{
 });
 
 app.get('/home', (req,res) => {
-    if (req.cookies.cookieemail) {
-        console.log("嗨妳好，如果cookie的確存在，則我會出現");
-        let ee = req.cookies['cookieemail'];
-        console.log('Inputted email is:'+ee);
-        let pp = req.cookies['cookiepass'];
-        console.log('Inputted password is:'+pp);
-        //if(pp !==)
-        res.render('home',{customername: req.cookies.cookieemail});
+    if (req.cookies.cookienemail || req.cookies.cookieoemail) {
+        console.log("Hi! New CT email cookie exist!");
+        res.render('home',{customername: req.cookies.cookieoemail});
     } else {
         console.log("Cookie 不存在. 如果是你還沒讓使用者填單，那沒關係，如果使用者已經填單了但還是看到我，那打掉重練!")
-        res.render('home',{customername: req.cookies.cookieemail});
+        res.render('home',{customername: req.cookies.cookienemail});
     }
 })
 

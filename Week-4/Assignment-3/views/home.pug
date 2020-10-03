@@ -9,14 +9,27 @@ html(lang="en")
   
   else 
     form(action='/member', method='get')
-      label Please input your email: 
+      label Sign-up now to get discounts: 
       br 
-      input(type='text', name='emails') 
+      input(type='text', name='nemails') 
       br
-      label Please input your password:
+      label Create a password:
       br
-      input(type='text', name='passw')
+      input(type='text', name='npassw')
       br          
-      button(type='submit') Submit la! 
+      button(type='submit') Sign-up!
+      br
+      br
+      label Already a customer? 
+      br
+      label Sign-in to your account: 
+      br 
+      input(type='text', name='oemails') 
+      br
+      label Input your password:
+      br
+      input(type='text', name='opassw')
+      br          
+      button(type='submit') Sign-in!
 
 
