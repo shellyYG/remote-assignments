@@ -46,8 +46,8 @@ app.get('/member', (req, res) => {
     res.cookie('cookieemail',req.query.emails);
     res.cookie('cookiepass',req.query.passw);
     console.log("cookie saved through get method from reaching /member")
-    //Check if the email exist
     
+    //Check if the email exist
     let sql = 'SELECT * FROM user WHERE email ='+"'"+ req.query.emails+"'";
     let query = db.query(sql, (err,result)=>{
         if(err) throw err;
@@ -67,37 +67,16 @@ app.get('/member', (req, res) => {
             let querycheck = db.query(sqlcheck,(errcheck,resultcheck)=>{
                 if(errcheck) throw errcheck;
                 console.log(resultcheck);
-                if(resultcheck.length===0){
-                    res.send('Wrong password!');
-                }else{
+                if(resultcheck.length===0){ //if wrong password
                     res.redirect('/home');
+                }else{
+                    res.render('member',{customername: req.query.emails});
                 }
             })
             
         }
         
     })
-    //     if(result.length === 0){
-    //         let post = {email: req.query.emails ,password: req.query.passw};
-    //         let sql = 'INSERT INTO user SET?';
-    //         let query = db.query(sql, post, (err, result)=> {
-    //             if(err) throw err;
-    //             console.log(result);
-    //             res.redirect('/home'); //redirect back to /myName
-    //         })
-    //     }else {
-    //         res.send('Sorry this email already exists!');
-    //     }
-    // })
-    
-    //store the name in the backend
-    // let post = {email: req.query.emails ,password: req.query.passw};
-    // let sql = 'INSERT INTO user SET?';
-    // let query = db.query(sql, post, (err, result)=> {
-    //     if(err) throw err;
-    //     console.log(result);
-    //     res.redirect('/home'); //redirect back to /myName
-    // })
 })
 
 
@@ -110,11 +89,14 @@ app.get('/checktable',(req, res)=>{
     });
 });
 
-
-
 app.get('/home', (req,res) => {
     if (req.cookies.cookieemail) {
         console.log("嗨妳好，如果cookie的確存在，則我會出現");
+        let ee = req.cookies['cookieemail'];
+        console.log('Inputted email is:'+ee);
+        let pp = req.cookies['cookiepass'];
+        console.log('Inputted password is:'+pp);
+        //if(pp !==)
         res.render('home',{customername: req.cookies.cookieemail});
     } else {
         console.log("Cookie 不存在. 如果是你還沒讓使用者填單，那沒關係，如果使用者已經填單了但還是看到我，那打掉重練!")
